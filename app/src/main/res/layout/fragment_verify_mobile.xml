@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:background="@color/white"
+    android:padding="16dp"
+    tools:context=".ui.register.register.verifyMobileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+
+            android:textSize="42dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/custom_fonts"
+            android:textFontWeight="500"
+            android:text="@string/enter_otp" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/custom_fonts"
+
+            android:text="@string/verify_mobile" />
+    </LinearLayout>
+
+    <com.mukesh.OtpView
+        android:id="@+id/otp_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:focusable="auto"
+        android:layout_centerInParent="true"
+
+        android:gravity="center"
+        android:inputType="number"
+        android:textColor="@color/black"
+        app:itemCount="4"
+        android:cursorVisible="true"
+        app:itemSpacing="40dp"
+        app:lineColor="@color/black"
+        app:viewType="line" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_next"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center|right"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/next"
+        android:enabled="false"
+        android:fontFamily="@font/custom_fonts"
+        android:padding="6dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_back"
+        android:layout_width="90dp"
+        android:layout_height="35dp"
+        android:layout_gravity="bottom|left"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/black"
+        android:drawablePadding="0dp"
+        android:background="@drawable/transparent_bg_bordered"
+        android:fontFamily="@font/custom_fonts"
+        android:padding="0dp"
+        android:textAllCaps="false"
+        android:text="@string/back" />
+
+</FrameLayout>

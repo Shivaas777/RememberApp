@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Remember</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_name">Enter Your Name</string>
+    <string name="create_account">To create a new account</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Set_Password">Set Password</string>
+    <string name="secure_account">To secure your account</string>
+    <string name="Password">Pasword</string>
+    <string name="confirm_password">Confirm Pasword</string>
+    <string name="back">Back</string>
+    <string name="enter_mobile">Enter Mobile Number</string>
+    <string name="receive_otp">To receieve OTP to get verified</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="verify_mobile">To verify your mobile number</string>
+    <string name="successfully_registered">Successfully Registered</string>
+    <string name="congrats">Congratulations</string>
+    <string name="verified">Your mobile number has been verfied</string>
+    <string name="get_started">Get Started</string>
+
+</resources>
