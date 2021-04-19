@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:padding="16dp"
-    tools:context=".ui.register.register.GetStartedFragment">
+    tools:context=".ui.register.GetStartedFragment">
 
 
 
@@ -60,7 +60,7 @@
 </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_cancel"
+        android:id="@+id/btn_getstarted"
         android:layout_width="150dp"
         android:textSize="18dp"
         android:layout_height="40dp"

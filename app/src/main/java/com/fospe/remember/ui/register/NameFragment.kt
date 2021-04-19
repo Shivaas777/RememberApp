@@ -1,4 +1,4 @@
-package com.fospe.remember.ui.register.register
+package com.fospe.remember.ui.register
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import com.fospe.remember.R
 import com.fospe.remember.utility.afterTextChangedChangeButtonImage
 import com.fospe.remember.utility.setBackgroundForRegisterButton

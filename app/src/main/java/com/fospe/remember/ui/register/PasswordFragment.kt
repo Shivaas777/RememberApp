@@ -1,20 +1,16 @@
-package com.fospe.remember.ui.register.register
+package com.fospe.remember.ui.register
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.fospe.remember.R
 import com.fospe.remember.utility.afterTextChangedChangeButtonImage
-import com.fospe.remember.utility.setBackgroundForRegisterButton
+import com.fospe.remember.utility.changeBG
 import kotlinx.android.synthetic.main.fragment_name.*
-import kotlinx.android.synthetic.main.fragment_name.btn_next
 import kotlinx.android.synthetic.main.fragment_name.view.*
 import kotlinx.android.synthetic.main.fragment_name.view.btn_next
 import kotlinx.android.synthetic.main.fragment_password.*
@@ -45,8 +41,8 @@ class PasswordFragment : Fragment() {
         viewForlayout = inflater.inflate(R.layout.fragment_password, container, false)
         viewForlayout.btn_next.setOnClickListener { navController.navigate(R.id.action_passwordFragment_to_mobileNumberFragment) }
         viewForlayout.btn_back.setOnClickListener { activity?.onBackPressed() }
-        viewForlayout.etPassword.afterTextChangedChangeButtonImage{changeBG(it,viewForlayout.etConfirm_password) }
-        viewForlayout.etConfirm_password.afterTextChangedChangeButtonImage{changeBG(it,viewForlayout.etPassword) }
+        viewForlayout.etPassword.afterTextChangedChangeButtonImage{changeBG(it,viewForlayout.etConfirm_password,viewForlayout.btn_next) }
+        viewForlayout.etConfirm_password.afterTextChangedChangeButtonImage{changeBG(it,viewForlayout.etPassword,viewForlayout.btn_next) }
         return  viewForlayout
     }
 
@@ -55,18 +51,7 @@ class PasswordFragment : Fragment() {
         navController= Navigation.findNavController(view)
     }
 
-fun changeBG(text : String,editText: EditText)
-{  Log.d("shiva","This is a debug message")
-    Log.d("SHIVA:","text length and paslength"+text.length+etPassword.text.length)
-    if (text.length>1 && editText.text.length>1){
-                btn_next.setBackgroundForRegisterButton("set")
-            }
-    else if(text.length==0)
-    {
-        btn_next.setBackgroundForRegisterButton("?")
-    }
 
 
 
-}
 }

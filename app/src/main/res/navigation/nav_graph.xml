@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nameFragment"
-        android:name="com.fospe.remember.ui.register.register.NameFragment"
+        android:name="com.fospe.remember.ui.register.NameFragment"
         android:label="fragment_name"
         tools:layout="@layout/fragment_name" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/mobileNumberFragment"
-        android:name="com.fospe.remember.ui.register.register.MobileNumberFragment"
+        android:name="com.fospe.remember.ui.register.MobileNumberFragment"
         android:label="fragment_mobile_number"
         tools:layout="@layout/fragment_mobile_number" >
         <action
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/verifyMobileFragment"
-        android:name="com.fospe.remember.ui.register.register.verifyMobileFragment"
+        android:name="com.fospe.remember.ui.register.verifyMobileFragment"
         android:label="fragment_verify_mobile"
         tools:layout="@layout/fragment_verify_mobile" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/passwordFragment"
-        android:name="com.fospe.remember.ui.register.register.PasswordFragment"
+        android:name="com.fospe.remember.ui.register.PasswordFragment"
         android:label="fragment_password"
         tools:layout="@layout/fragment_password" >
         <action
@@ -56,7 +56,7 @@
     </fragment>
     <fragment
         android:id="@+id/getStartedFragment"
-        android:name="com.fospe.remember.ui.register.register.GetStartedFragment"
+        android:name="com.fospe.remember.ui.register.GetStartedFragment"
         android:label="fragment_get_started"
         tools:layout="@layout/fragment_get_started" />
 </navigation>

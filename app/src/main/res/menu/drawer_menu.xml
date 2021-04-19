@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item android:id="@+id/homeFragment"
+    android:title="@null"
+    android:checkable="true"
+    app:actionLayout="@layout/drawer_menu_home">
+</item>
+    <item android:id="@+id/profileFragment"
+        android:title="@null"
+        android:checkable="true"
+        app:actionLayout="@layout/drawer_menu_profile">
+    </item>
+    <item android:id="@+id/membersFragment"
+        android:title="@null"
+        android:checkable="true"
+        app:actionLayout="@layout/drawer_menu_member">
+    </item>
+    <item android:id="@+id/storeFragment"
+        android:title="@null"
+        android:checkable="true"
+        app:actionLayout="@layout/drawer_menu_store">
+    </item>
+    <item android:id="@+id/settingFragment"
+        android:title="@null"
+        android:checkable="true"
+        app:actionLayout="@layout/drawer_menu_setting">
+    </item>
+
+
+</menu>

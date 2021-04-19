@@ -1,25 +1,18 @@
-package com.fospe.remember.ui.register.register
+package com.fospe.remember.ui.register
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.fospe.remember.R
 import com.fospe.remember.utility.afterTextChangedChangeButtonImage
 import com.fospe.remember.utility.setBackgroundForRegisterButton
 import com.mukesh.OnOtpCompletionListener
-import kotlinx.android.synthetic.main.fragment_name.*
-import kotlinx.android.synthetic.main.fragment_name.view.*
 import kotlinx.android.synthetic.main.fragment_name.view.btn_next
-import kotlinx.android.synthetic.main.fragment_verify_mobile.*
-import kotlinx.android.synthetic.main.fragment_verify_mobile.btn_next
 import kotlinx.android.synthetic.main.fragment_verify_mobile.view.*
 
 

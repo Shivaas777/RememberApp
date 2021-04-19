@@ -1,2 +1,5 @@
+include ':InternetChange'
+include ':NetworkConnection'
+include ':api'
 include ':app'
 rootProject.name = "Remember"

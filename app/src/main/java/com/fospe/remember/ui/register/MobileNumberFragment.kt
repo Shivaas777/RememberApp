@@ -1,4 +1,4 @@
-package com.fospe.remember.ui.register.register
+package com.fospe.remember.ui.register
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,10 +12,7 @@ import com.fospe.remember.utility.afterTextChangedChangeButtonImage
 import com.fospe.remember.utility.setBackgroundForRegisterButton
 import kotlinx.android.synthetic.main.fragment_mobile_number.view.*
 import kotlinx.android.synthetic.main.fragment_name.*
-import kotlinx.android.synthetic.main.fragment_name.view.*
 import kotlinx.android.synthetic.main.fragment_name.view.btn_next
-
-import kotlinx.android.synthetic.main.fragment_verify_mobile.view.*
 
 
 class MobileNumberFragment : Fragment() {
