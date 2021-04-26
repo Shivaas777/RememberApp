@@ -3,13 +3,15 @@ package com.fospe.remember.utility
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
+import android.widget.FrameLayout
 import com.fospe.remember.R
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_name.*
+
 
 fun EditText.afterTextChangedChangeButtonImage(afterTextChanged: (String) -> Unit) {
     this.addTextChangedListener(object : TextWatcher {
@@ -21,12 +23,12 @@ fun EditText.afterTextChangedChangeButtonImage(afterTextChanged: (String) -> Uni
 
         override fun afterTextChanged(editable: Editable?) {
             afterTextChanged.invoke(editable.toString())
-            Log.d("text",editable.toString())
+            Log.d("text", editable.toString())
         }
     })
 }
 
-fun Button.setBackgroundForRegisterButton(text :String)
+fun Button.setBackgroundForRegisterButton(text: String)
 {
 
         if(text.length>1)
@@ -43,5 +45,7 @@ fun Button.setBackgroundForRegisterButton(text :String)
 }
 
 fun View.snack(message: String, duration: Int = Snackbar.LENGTH_LONG) {
+
     Snackbar.make(this, message, duration).show()
+
 }

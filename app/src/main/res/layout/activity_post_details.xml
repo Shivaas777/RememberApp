@@ -2,20 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_item"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:fitsSystemWindows="true"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/custom_toolbar">
+    </include>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
 
             android:padding="5dp">
 
@@ -35,6 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="1dp"
                 android:fontFamily="@font/sf_pro_display"
                 android:text="Albert Einstien"
                 android:textColor="@color/black"
@@ -60,8 +68,8 @@
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
 
                 android:layout_marginRight="5dp"
                 app:layout_constraintBottom_toBottomOf="@+id/tvUser_location"
@@ -76,8 +84,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:fontFamily="@font/sf_pro_display"
-                android:textColor="@color/black"
                 android:text="10 mins ago"
+                android:textColor="@color/black"
                 android:textSize="12dp"
                 app:layout_constraintBottom_toBottomOf="@+id/tvUser_location"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +100,7 @@
                 android:text="60th Death Anniversary"
                 android:textColor="@color/black"
                 android:textFontWeight="600"
-                android:textSize="18dp"
+                android:textSize="22dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view" />
 
@@ -110,12 +118,16 @@
                 android:id="@+id/tvPostDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
                 android:layout_marginTop="18dp"
-                android:lineSpacingExtra="5dp"
-                android:maxLines="2"
                 android:fontFamily="@font/sf_pro_display"
-                android:text="An anniversary of a loved ones death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long time. "
+                android:lineSpacingExtra="5dp"
+                android:maxLines="8"
+                android:scrollbars="vertical"
+
+                android:text="An anniversary of a loved ones death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long time.An anniversary of a loved ones death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long tim.An anniversary of a loved ones death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long tim  death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long time.An anniversary of a loved ones death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long tim.An anniversary of a loved ones death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long tim "
                 android:textColor="@color/black"
+                android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvPostCreated" />
 
@@ -131,43 +143,27 @@
 
             </View>
 
-            <TextView
-                android:id="@+id/tvreadMore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:fontFamily="@font/sf_pro_display"
-                android:text="Read More..."
-                android:textFontWeight="300"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPostDetails" />
 
             <ImageView
                 android:id="@+id/imageView7"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="16dp"
-                android:backgroundTint="@color/black"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:backgroundTint="@color/black"
                 app:layout_constraintStart_toEndOf="@+id/tvViewCount"
                 app:layout_constraintTop_toBottomOf="@+id/view1"
                 app:srcCompat="@drawable/ic_view" />
 
             <TextView
                 android:id="@+id/tvViewCount"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:includeFontPadding="false"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/sf_pro_display"
                 android:text="400"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView6"
                 app:layout_constraintTop_toBottomOf="@+id/view1" />
 
@@ -185,15 +181,15 @@
                 tools:layout_editor_absoluteX="10dp" />
 
 
+
+
             <ImageView
                 android:id="@+id/imageView6"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="5dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginTop="5dp"
                 android:backgroundTint="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view1"
                 app:srcCompat="@drawable/ic_comment" />
@@ -203,12 +199,48 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-
+                android:layout_marginTop="5dp"
                 android:text="5000"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView7"
                 app:layout_constraintTop_toBottomOf="@+id/view1" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_comment"
+                android:fontFamily="@font/sf_pro_display"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvCommentCount" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                tools:layout_editor_absoluteX="5dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_addComment"
+                android:layout_width="200dp"
+                android:textSize="14dp"
+                android:layout_height="30dp"
+
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                android:drawablePadding="0dp"
+                android:background="@drawable/button_bg"
+                android:fontFamily="@font/custom_fonts"
+                android:padding="0dp"
+
+                android:text="@string/add_comment"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

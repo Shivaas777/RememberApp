@@ -82,4 +82,13 @@
         android:textAllCaps="false"
         android:text="@string/back" />
 
+    <TextView
+        android:id="@+id/tvCode"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginBottom="50dp"
+        android:textSize="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1234" />
+
 </FrameLayout>

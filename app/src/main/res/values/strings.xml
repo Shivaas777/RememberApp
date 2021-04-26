@@ -36,5 +36,13 @@
     <string name="menu_store">Store</string>
     <string name="menu_settings">Settings</string>
 
+    <string name="empty_comment">Be the first one to share memories</string>
+    <string name="add_comment">Express your feelings</string>
+    <string name="add_comment_label">Express your memories with </string>
+    <string name="add_comment_hint">Type here to express your memories… </string>
+    <string name="add_comment_button">Publish</string>
+
+    <string name="create_button">Create Memories</string>
+
 
 </resources>

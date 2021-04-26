@@ -20,13 +20,13 @@ open class BaseActivity : AppCompatActivity() {
         intenetChange= DetectInternet(application)
         intenetChange.observe(this, Observer { isAvailable->
 
-            if(isAvailable)
+            /*if(isAvailable)
             {
                 view.snack("You are online now")
             }
             else {
                 view.snack("You are offline now")
-            }
+            }*/
         })
     }
 }

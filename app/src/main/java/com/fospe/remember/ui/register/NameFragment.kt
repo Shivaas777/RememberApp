@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.fospe.remember.R
-import com.fospe.remember.utility.afterTextChangedChangeButtonImage
-import com.fospe.remember.utility.setBackgroundForRegisterButton
+import com.fospe.remember.utility.*
 import kotlinx.android.synthetic.main.fragment_name.*
 import kotlinx.android.synthetic.main.fragment_name.view.*
 
@@ -29,7 +28,18 @@ class NameFragment : Fragment() {
         savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         viewForlayout= inflater.inflate(R.layout.fragment_name, container, false)
-        viewForlayout.btn_next.setOnClickListener { navController.navigate(R.id.action_nameFragment_to_passwordFragment) }
+
+        viewForlayout.btn_next.setOnClickListener {
+
+          if(etName.text.length>2) {
+              val bundle = Bundle()
+              bundle.putString("name", viewForlayout.etName.text.toString())
+              navController.navigate(R.id.action_nameFragment_to_passwordFragment, bundle)
+          }
+            else {
+                    viewForlayout.btn_next.snack("Name should have minimum 3 characters")
+            }
+        }
         viewForlayout.btn_cancel.setOnClickListener { activity?.finish() }
 
         viewForlayout.etName.afterTextChangedChangeButtonImage {btn_next.setBackgroundForRegisterButton(it) }

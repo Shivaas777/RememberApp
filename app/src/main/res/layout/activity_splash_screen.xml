@@ -9,7 +9,7 @@
     tools:context=".ui.SplashScreenActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/splashImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
