@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import com.fospe.remember.R
 import com.fospe.remember.datastore.UserPreferences
 import com.fospe.remember.ui.HomeScreen.HomeActivity
+import com.fospe.remember.ui.login.LoginActivity
 import com.fospe.remember.ui.register.RegisterActivity
 import com.fospe.remember.utility.SharedPref
 import com.fospe.remember.utility.snack
@@ -70,7 +71,7 @@ class SplashScreenActivity : AppCompatActivity() {
         // we used the postDelayed(Runnable, time) method
         // to send a message with a delayed time.
         Handler().postDelayed({
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
             finish()

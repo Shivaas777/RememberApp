@@ -50,6 +50,7 @@ class HomeFragment : Fragment() {
     private lateinit var refreshListener :SwipeRefreshLayout.OnRefreshListener
     private lateinit var postList : ArrayList<PostItem>
     private lateinit var adapter :PostListAdapter
+    private lateinit var user :User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +68,7 @@ class HomeFragment : Fragment() {
         getPostViewModel =ViewModelProvider(this,getPostViewModelFactory).get(GetPostViewModel::class.java)
         sharedPref= SharedPref(requireContext())
         observePostListResponse(this)
-        var user: User? =sharedPref.get<User>("user")
+         user = sharedPref.get<User>("user")!!
         var params = HashMap<String,String>()
         if (user != null) {
             params["user_id"]= user.id
@@ -76,7 +77,7 @@ class HomeFragment : Fragment() {
         viewForlayout.rv_postlist.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         viewForlayout.swipeRefreshLayout.post { viewForlayout.swipeRefreshLayout.isRefreshing = true }
          postList = ArrayList<PostItem>()
-         adapter = PostListAdapter(requireContext(),postList)
+         adapter = PostListAdapter(requireContext(),postList,user.id)
         viewForlayout.rv_postlist.adapter=adapter
         refreshListener= SwipeRefreshLayout.OnRefreshListener {
             getPostViewModel.getPostResponse(params)
@@ -101,7 +102,7 @@ class HomeFragment : Fragment() {
             when (it.isSuccess)
             {
                 true->{
-                    adapter.setPostList(it.response,requireContext())
+                    adapter.setPostList(it.response,requireContext(),user.id)
                     viewForlayout.swipeRefreshLayout.isRefreshing = false
                 }
                 false->{

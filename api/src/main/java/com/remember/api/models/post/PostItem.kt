@@ -9,5 +9,9 @@ data class PostItem(
     val post_time_diff: String,
     val post_time_value: String,
     val post_title: String,
+    val born_date:String,
+    val death_date :String,
+    val relation :String,
+    val days_to_go :String,
     val share: Int
 )

@@ -1,9 +1,11 @@
 package com.remember.api.network
 
+import com.remember.api.models.post.PostDetailsResponse
 import com.remember.api.models.post.PostResponse
 import com.remember.api.models.registration.RegistrationResponse
 import com.remember.api.models.registration.Verification
 import com.remember.api.models.registration.VerificationResponse
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.FieldMap
 import retrofit2.http.POST
@@ -21,5 +23,8 @@ interface RememberApi {
 
     @POST("/user/getPost")
     suspend fun getPost(@Body body :HashMap<String,String>) : PostResponse
+
+    @POST("/user/getPostDetails")
+    suspend fun getPostDetials(@Body body :HashMap<String,String>) : Response<PostDetailsResponse>
 
 }

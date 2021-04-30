@@ -5,6 +5,7 @@
     <string name="enter_name">Enter Your Name</string>
     <string name="create_account">To create a new account</string>
     <string name="Cancel">Cancel</string>
+    <string name="Register">Register</string>
     <string name="Set_Password">Set Password</string>
     <string name="secure_account">To secure your account</string>
     <string name="Password">Pasword</string>
@@ -42,6 +43,10 @@
     <string name="add_comment_hint">Type here to express your memories… </string>
     <string name="add_comment_button">Publish</string>
 
+    <string name="create_post_select_profile">Remembering</string>
+    <string name="create_post_select_date">Remembering On</string>
+    <string name="create_post_event_title">Event Title</string>
+    <string name="create_post_event_desc">Event Description</string>
     <string name="create_button">Create Memories</string>
 
 

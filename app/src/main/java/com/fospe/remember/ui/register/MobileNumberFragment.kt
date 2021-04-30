@@ -84,7 +84,7 @@ class MobileNumberFragment : Fragment() {
         val params = HashMap<String, String>()
 
         params["name"] = name.toString()
-        params["email"] = "kars@gmail.com"
+        params["email"] = ""
         params["mobile"] =  "+1"+viewForlayout.etMobile.text.toString()
         params["password"] = password.toString()
         params["device_type"] = "1"
