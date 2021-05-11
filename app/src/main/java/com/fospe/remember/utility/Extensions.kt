@@ -1,5 +1,6 @@
 package com.fospe.remember.utility
 
+import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -8,6 +9,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.fospe.remember.R
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_name.*
@@ -48,4 +51,8 @@ fun View.snack(message: String, duration: Int = Snackbar.LENGTH_LONG) {
 
     Snackbar.make(this, message, duration).show()
 
+}
+
+fun ImageView.loadImage(url: String, context: Context) {
+    Glide.with(context).load(url).into(this)
 }

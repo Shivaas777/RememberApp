@@ -11,9 +11,6 @@ class RememberClient {
 
     companion object{
         private val retrofit:Retrofit by lazy {
-            val gson = GsonBuilder()
-                .setLenient()
-                .create()
 
             val interceptor = HttpLoggingInterceptor()
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)

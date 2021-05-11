@@ -14,4 +14,5 @@ data class PostItem(
     val relation :String,
     val days_to_go :String,
     val share: Int
+
 )

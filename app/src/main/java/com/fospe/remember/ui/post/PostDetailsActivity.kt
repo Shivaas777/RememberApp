@@ -16,12 +16,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.fospe.remember.R
 import com.fospe.remember.adapters.CommentListAdapter
 import com.fospe.remember.adapters.PostListAdapter
-import com.fospe.remember.utility.changeToolbarText
-import com.fospe.remember.utility.hideProgreeDialog
-import com.fospe.remember.utility.showProgressDialog
-import com.fospe.remember.viewmodels.Post.GetPostDetailsViewModel
-import com.fospe.remember.viewmodels.Post.GetPostDetailsViewModelFactory
-import com.fospe.remember.viewmodels.Post.GetPostViewModelFactory
+import com.fospe.remember.utility.*
+import com.fospe.remember.viewmodels.Post.*
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.remember.api.models.post.Comment
 import com.remember.api.repository.APIRepository
@@ -36,6 +32,8 @@ class PostDetailsActivity : AppCompatActivity() {
     private lateinit var apiRepository: APIRepository
     private lateinit var getPostDetailsViewModelFactory: GetPostDetailsViewModelFactory
     private lateinit var getPostDetailsViewModel: GetPostDetailsViewModel
+    private lateinit var addCommentViewModelFactory: AddCommentViewModelFactory
+    private lateinit var addCommentViewModel: AddCommentViewModel
     private lateinit var commentListAdapter: CommentListAdapter
     private lateinit var commentList: ArrayList<Comment>
     private lateinit var userid:String
@@ -48,6 +46,8 @@ class PostDetailsActivity : AppCompatActivity() {
         apiRepository= APIRepository()
         getPostDetailsViewModelFactory= GetPostDetailsViewModelFactory(apiRepository)
         getPostDetailsViewModel= ViewModelProvider(this,getPostDetailsViewModelFactory).get(GetPostDetailsViewModel::class.java)
+        addCommentViewModelFactory= AddCommentViewModelFactory((apiRepository))
+        addCommentViewModel=ViewModelProvider(this,addCommentViewModelFactory).get(AddCommentViewModel::class.java)
         var scrollingMovementMethod:ScrollingMovementMethod= ScrollingMovementMethod()
         tvPostDetails.movementMethod=scrollingMovementMethod
         val intent =getIntent()
@@ -60,17 +60,19 @@ class PostDetailsActivity : AppCompatActivity() {
 
 
         ObservePostResponse()
-        getPostDetails()
-
+        getPostDetails(true)
+        observeAddCommentResponse()
         btn_addComment.setOnClickListener {
             showAddCommentDialog()
         }
 
     }
 
-    fun getPostDetails(){
+    fun getPostDetails(showProgress:Boolean){
 
-        showProgressDialog(this,"fetching post details...")
+        if(showProgress) {
+            showProgressDialog(this, "fetching post details...")
+        }
         var params =HashMap<String,String>()
         params["user_id"] = userid
         params["post_id"]=postid
@@ -82,14 +84,26 @@ class PostDetailsActivity : AppCompatActivity() {
 
             hideProgreeDialog()
             cardView.visibility=View.VISIBLE
-            tvUserName.text=it.response.post_head.profile_name
-            tvUser_location.text=it.response.post_head.profile_location
-            tvPostTime.text=it.response.post_time_diff
-            tvPostTitle.text=it.response.post_title
-            tvPostDetails.text=it.response.post_content
-            tvCommentCount.text=it.response.share.toString()
-            tvViewCount.text=it.response.views.toString()
-            commentListAdapter.setCommentList(it.response.comments,this)
+            it.response.let {item ->
+                tvUserName.text= item.post_head.profile_name
+                tvUser_location.text=item.post_head.profile_location
+                tvPostTime.text=item.created_at
+                tvPostTitle.text=item.post_title.trim()
+                tvPostDetails.text=item.post_content.trim()
+                tvCommentCount.text=item.comment_count.toString()
+                tvEventDate.text="Event date: "+ item.event_date
+                tvViewCount.text=item.views.toString()
+                user_image.loadImage(item.post_head.profile_image,this)
+                if(item.comments.size>0) {
+                    tvMsg.visibility=View.GONE
+                    commentListAdapter.setCommentList(item.comments, this)
+                    commentListAdapter.notifyDataSetChanged()
+                }
+                else{
+                    tvMsg.visibility=View.VISIBLE
+                }
+
+            }
 
         })
     }
@@ -98,6 +112,7 @@ class PostDetailsActivity : AppCompatActivity() {
         bottomSheetDialog= BottomSheetDialog(this)
         val view = layoutInflater.inflate(R.layout.add_comment, null)
         bottomSheetDialog.run {
+
             setContentView(view)
             show()
             bottomSheetDialog.etComment.addTextChangedListener(object :TextWatcher{
@@ -107,6 +122,7 @@ class PostDetailsActivity : AppCompatActivity() {
 
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     bottomSheetDialog.tvCount.text =p0?.length.toString()+"/250"
+
                 }
 
 
@@ -115,10 +131,48 @@ class PostDetailsActivity : AppCompatActivity() {
                 }
             })
         }
+        bottomSheetDialog.tvUser_nm.setText(tvUserName.text.toString())
         bottomSheetDialog.btn_publishComment.setOnClickListener {
 
-            bottomSheetDialog.dismiss()
+            if(bottomSheetDialog.etComment.text.length>0) {
+                showProgressDialog(this,"posting...")
+                var params = HashMap<String, String>()
+                params["user_id"] = userid
+                params["post_id"] = postid
+                params["comment"] = bottomSheetDialog.etComment.text.toString()
+                addCommentViewModel.addComment(params)
+            }
+            else {
+                showSnack(this,"Comment cannot be empty")
+            }
         }
+    }
+
+    fun observeAddCommentResponse()
+    {
+        addCommentViewModel.getCommentResponse.observe(this, Observer {response->
+
+            hideProgreeDialog()
+            when (response.isSuccessful) {
+                true -> {
+                    when (response.body()?.isSuccess) {
+                        true -> {
+                            getPostDetails(false)
+                            bottomSheetDialog.dismiss()
+                        }
+                        false -> {
+                            var msg = response.body()?.message
+                            showSnack(this,msg.toString())
+                        }
+                    }
+                }
+                false -> {
+
+
+                    showSnack(this,"Unable to add your comment")
+                }
+            }
+        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -131,5 +185,11 @@ class PostDetailsActivity : AppCompatActivity() {
         else{
             return super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        setResult(RESULT_OK)
+        finish()
     }
 }

@@ -1,6 +1,7 @@
 package com.fospe.remember.ui.login
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
@@ -28,7 +29,8 @@ class LoginActivity : AppCompatActivity() {
 
         if (supportActionBar != null)
             supportActionBar?.hide()
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+
+
         sharedPreferences= SharedPref(this)
         apiRepository= APIRepository()
         loginViewModelFactory= LoginViewModelFactory(apiRepository)
@@ -38,6 +40,8 @@ class LoginActivity : AppCompatActivity() {
             /*if(checkForBiometrics(this)) {
                 showDialogConfirmation(this, { if (it.equals("positive", true)) finish() })
             }*/
+
+            showProgressDialog(this,"Logging in..")
 
             var params = HashMap<String,String>()
             params["mobile"] = etMobile.text.toString()
@@ -59,6 +63,8 @@ class LoginActivity : AppCompatActivity() {
     fun observeloginResponse()
     {
         loginViewModel.loginresponse.observe(this, Observer {
+
+            hideProgreeDialog()
 
             when (it.isSuccess) {
                 true -> {

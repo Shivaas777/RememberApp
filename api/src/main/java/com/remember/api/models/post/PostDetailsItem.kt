@@ -14,5 +14,8 @@ data class PostDetailsItem(
     val post_title: String,
     val relation: String,
     val share: Int,
-    val views: Int
+    val comment_count:Int,
+    val event_date: String,
+    val views: Int,
+    val created_at:String
 )

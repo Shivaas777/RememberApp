@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.app.KeyguardManager
 import android.content.Context
 import android.content.Context.KEYGUARD_SERVICE
+import android.content.DialogInterface.OnShowListener
 import android.content.pm.PackageManager
 import android.graphics.BlendMode
 import android.graphics.BlendModeColorFilter
@@ -13,9 +14,7 @@ import android.graphics.PorterDuff
 import android.hardware.biometrics.BiometricManager
 import android.os.Build
 import android.util.Log
-import android.util.TypedValue
 import android.view.Gravity
-import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
@@ -23,8 +22,8 @@ import android.widget.EditText
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import com.fospe.remember.R
-import com.google.android.material.snackbar.Snackbar
 import com.shashank.platform.fancyflashbarlib.Flashbar
 import kotlinx.android.synthetic.main.add_comment.*
 import kotlinx.android.synthetic.main.custom_toolbar.view.*
@@ -50,28 +49,41 @@ fun changeBG(text: String, editText: EditText, next: Button) {
 
 }
 
-fun showDialogConfirmation(context: Context, buttonAction: (String) -> Unit) {
+fun showDialogConfirmation(
+    context: Context,
+    title: String,
+    message: String,
+    showNegativeButton: Boolean,
+    buttonAction: (String) -> Unit
+) {
 
         val builder = AlertDialog.Builder(context)
         //set title for alert dialog
-        builder.setTitle("Security Alert")
+        builder.setTitle(title)
         //set message for alert dialog
-        builder.setMessage("Do you want to add fingerprint security")
-        builder.setIcon(android.R.drawable.ic_dialog_alert)
+        builder.setMessage(message)
+        //builder.setIcon(android.R.drawable.ic_dialog_alert)
 
         //performing positive action
-        builder.setPositiveButton("Yes") { dialogInterface, which ->
+        builder.setPositiveButton("OK") { dialogInterface, which ->
 
             buttonAction.invoke("positive")
         }
 
         //performing negative action
-        builder.setNegativeButton("No") { dialogInterface, which ->
+    if(showNegativeButton)
+    {
+        builder.setNegativeButton("Cancel") { dialogInterface, which ->
             dialogInterface.dismiss()
         }
+        }
+
         // Create the AlertDialog
         val alertDialog: AlertDialog = builder.create()
-        // Set other dialog properties
+    alertDialog.setOnShowListener(OnShowListener {
+        alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(context,R.color.black))
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(context,R.color.black))
+    })
         alertDialog.setCancelable(false)
         alertDialog.show()
 
@@ -161,7 +173,7 @@ fun hideProgreeDialog()
 
 }
 
-fun showSnack(activity: Activity,text:String)
+fun showSnack(activity: Activity, text: String)
 {
 
         Flashbar.Builder(activity)

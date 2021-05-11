@@ -1,5 +1,6 @@
 package com.fospe.remember.ui.HomeScreen
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -52,6 +56,17 @@ class HomeFragment : Fragment() {
     private lateinit var adapter :PostListAdapter
     private lateinit var user :User
 
+    val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+    { result: ActivityResult ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            //  you will get result here in result.data
+            Toast.makeText(activity,"refresh List",Toast.LENGTH_SHORT).show()
+            viewForlayout.swipeRefreshLayout.post { viewForlayout.swipeRefreshLayout.isRefreshing = true }
+            refreshListener.onRefresh() }
+        }
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -88,7 +103,9 @@ class HomeFragment : Fragment() {
 
         viewForlayout.btn_createMemories.setOnClickListener {
             val intent = Intent(activity, CreatePostActivity::class.java)
-            startActivity(intent)
+            intent.putExtra("user_id",user.id)
+            startForResult.launch(intent)
+           // startActivity(intent)
         }
 
 
@@ -99,12 +116,24 @@ class HomeFragment : Fragment() {
     {
         getPostViewModel.postResponse.observe(context, Observer {
 
+            viewForlayout.swipeRefreshLayout.isRefreshing = false
             when (it.isSuccess)
             {
                 true->{
-                    adapter.setPostList(it.response,requireContext(),user.id)
-                    viewForlayout.swipeRefreshLayout.isRefreshing = false
+
+
+
+                    if(it.response.size>0)
+                    {
+                        tv_noEvents.visibility= View.GONE
+                        adapter.setPostList(it.response,requireContext(),user.id)
+                        adapter.notifyDataSetChanged()
+                    }
+                    else {
+                        tv_noEvents.visibility= View.VISIBLE
+                    }
                 }
+
                 false->{
                     swipeRefreshLayout.snack(it.message)
                 }

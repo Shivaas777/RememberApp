@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.fospe.remember.R
 import com.fospe.remember.ui.post.PostDetailsActivity
+import com.fospe.remember.utility.loadImage
 import com.remember.api.models.post.PostItem
+import kotlinx.android.synthetic.main.activity_post_details.*
 import kotlinx.android.synthetic.main.event_item.view.*
 
 class PostListAdapter(private var context: Context, private var list :ArrayList<PostItem>,private var userId:String?) : RecyclerView.Adapter<PostListAdapter.ViewHolder>() {
@@ -38,11 +40,10 @@ class PostListAdapter(private var context: Context, private var list :ArrayList<
     {
         fun bindItems(postItem: PostItem,context: Context,userId: String?) {
 
-            //itemView.user_image.setImageResource(R.drawable.user)
             itemView.tvUserName.text=postItem.post_head.profile_name
-
-            itemView.tvUser_born.text =postItem.born_date
-            itemView.tvUser_died.text=postItem.death_date
+            itemView.user_image.loadImage(postItem.post_head.profile_image,context)
+            itemView.tvUser_born.text = "Born : "+postItem.born_date
+            itemView.tvUser_died.text="Died : " +postItem.death_date
             itemView.tvDaysRemaining.text=postItem.days_to_go
             itemView.tvRelation.text=postItem.relation
             itemView.tvPostCreated.text="by : "+postItem.post_created_by

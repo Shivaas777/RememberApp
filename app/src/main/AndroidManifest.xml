@@ -6,20 +6,38 @@
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Remember"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.post.CreatePostActivity"
-            android:theme="@style/Theme.Remember.NoActionBar"></activity>
+        <activity android:name=".ui.members.MemberDetailsActivity"
+            android:theme="@style/Theme.Remember.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".ui.members.CreateMemberActivity"
+            android:theme="@style/Theme.Remember.NoActionBar" />
+        <activity
+            android:name=".ui.post.CreatePostActivity"
+            android:theme="@style/Theme.Remember.NoActionBar" />
         <activity
             android:name=".ui.post.PostDetailsActivity"
-            android:theme="@style/Theme.Remember.NoActionBar"></activity>
+            android:theme="@style/Theme.Remember.NoActionBar" />
         <activity
             android:name=".ui.SplashScreenActivity"
             android:theme="@style/Theme.Remember.NoActionBar">
@@ -39,6 +57,16 @@
             android:name=".ui.register.RegisterActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity android:name=".BaseActivity" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
     </application>
 
 </manifest>

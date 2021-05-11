@@ -25,8 +25,12 @@
     </style>
 
     <style name="Theme.Remember.NoActionBar">
-        <item name="windowActionBar">false</item>
+        <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
 
     <style name="Theme.Remember.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

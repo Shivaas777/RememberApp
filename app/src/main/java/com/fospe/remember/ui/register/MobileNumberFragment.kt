@@ -85,7 +85,7 @@ class MobileNumberFragment : Fragment() {
 
         params["name"] = name.toString()
         params["email"] = ""
-        params["mobile"] =  "+1"+viewForlayout.etMobile.text.toString()
+        params["mobile"] =  viewForlayout.etMobile.text.toString()
         params["password"] = password.toString()
         params["device_type"] = "1"
         params["device_token"] = "qqwee"

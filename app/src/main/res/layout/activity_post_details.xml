@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="8dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true">
 
@@ -122,8 +122,8 @@
                 android:id="@+id/tvPostDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="3dp"
                 android:fontFamily="@font/sf_pro_display"
                 android:lineSpacingExtra="5dp"
                 android:maxLines="5"
@@ -132,13 +132,14 @@
                 android:text="An anniversary of a loved ones death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long time.An anniversary of a loved ones death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long tim.An anniversary of a loved ones death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long tim  death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long time.An anniversary of a loved ones death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long tim.An anniversary of a loved ones death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long tim "
                 android:textColor="@color/black"
                 android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEventDate" />
 
             <View
                 android:id="@+id/view"
                 android:layout_width="match_parent"
-                android:layout_height="0.5dp"
+                android:layout_height="1dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
@@ -155,12 +156,12 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/black"
-                app:layout_constraintStart_toEndOf="@+id/tvViewCount"
+                app:layout_constraintStart_toEndOf="@+id/tvCommentCount"
                 app:layout_constraintTop_toBottomOf="@+id/view1"
                 app:srcCompat="@drawable/ic_view" />
 
             <TextView
-                android:id="@+id/tvViewCount"
+                android:id="@+id/tvCommentCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
@@ -174,7 +175,7 @@
             <View
                 android:id="@+id/view1"
                 android:layout_width="match_parent"
-                android:layout_height="0.5dp"
+                android:layout_height="1dp"
 
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="25dp"
@@ -183,10 +184,6 @@
                 android:background="@color/gray"
                 app:layout_constraintTop_toBottomOf="@+id/tvPostDetails"
                 tools:layout_editor_absoluteX="10dp" />
-
-
-
-
             <ImageView
                 android:id="@+id/imageView6"
                 android:layout_width="20dp"
@@ -199,7 +196,7 @@
                 app:srcCompat="@drawable/ic_comment" />
 
             <TextView
-                android:id="@+id/tvCommentCount"
+                android:id="@+id/tvViewCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
@@ -210,7 +207,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/view1" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/tvMsg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/empty_comment"
@@ -229,8 +226,10 @@
 
                 app:layout_constraintBottom_toBottomOf="@+id/btn_addComment"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.555"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                app:layout_constraintVertical_bias="0.0" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_addComment"

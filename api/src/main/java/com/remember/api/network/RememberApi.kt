@@ -1,13 +1,13 @@
 package com.remember.api.network
 
+import com.remember.api.models.members.GetMembersResponse
+import com.remember.api.models.post.ApiResponse
 import com.remember.api.models.post.PostDetailsResponse
 import com.remember.api.models.post.PostResponse
 import com.remember.api.models.registration.RegistrationResponse
-import com.remember.api.models.registration.Verification
 import com.remember.api.models.registration.VerificationResponse
 import retrofit2.Response
 import retrofit2.http.Body
-import retrofit2.http.FieldMap
 import retrofit2.http.POST
 
 interface RememberApi {
@@ -26,5 +26,20 @@ interface RememberApi {
 
     @POST("/user/getPostDetails")
     suspend fun getPostDetials(@Body body :HashMap<String,String>) : Response<PostDetailsResponse>
+
+    @POST("/user/getYourMember")
+    suspend fun getAddedMembers(@Body body: HashMap<String, String>):Response<GetMembersResponse>
+
+    @POST("/user/addPost")
+    suspend fun createPost(@Body body: HashMap<String, String>):Response<ApiResponse>
+
+    @POST("/user/addComment")
+    suspend fun addComment(@Body body: HashMap<String, String>):Response<ApiResponse>
+
+    @POST("/user/addComment")
+    suspend fun deleteMember(@Body body: HashMap<String, String>):Response<ApiResponse>
+
+    @POST("/user/searchMember")
+    suspend fun searchMember(@Body body: HashMap<String, String>):Response<GetMembersResponse>
 
 }

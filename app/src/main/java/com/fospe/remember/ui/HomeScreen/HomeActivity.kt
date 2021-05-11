@@ -3,6 +3,7 @@ package com.fospe.remember.ui.HomeScreen
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -30,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
-
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         supportActionBar?.title="Remember"
         toggle= ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open,
             R.string.navigation_drawer_close);

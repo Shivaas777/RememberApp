@@ -40,7 +40,7 @@ class CommentListAdapter(private var context: Context,private var commentList: A
         fun bindItems(commentItem : Comment,context: Context) {
 
             itemView.tvUserName.text=commentItem.title.name
-            itemView.tvCommentTime.text=commentItem.title.time
+            itemView.tvCommentTime.text=commentItem.title.created_at
             itemView.tvUserComment.text=commentItem.comment
         }
     }

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -19,23 +20,33 @@
         android:layout_height="match_parent" />
 
 
+
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_createMemories"
-        android:layout_width="180dp"
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tv_noEvents"
+        android:visibility="gone"
+        android:fontFamily="@font/sf_pro_display"
         android:textSize="14dp"
+        android:textColor="@color/black"
+        android:text="@string/no_events"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
+
+    </TextView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_createMemories"
+        android:layout_width="wrap_content"
         android:layout_gravity="bottom|center"
-
-        android:layout_height="30dp"
-
+        android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:textColor="@color/white"
         android:drawablePadding="0dp"
-        android:background="@drawable/button_bg"
-        android:fontFamily="@font/custom_fonts"
+        app:backgroundTint="@color/black"
+        app:elevation="6dp"
+        app:tint="@color/white"
+        app:srcCompat="@drawable/ic_add"
+        app:fabSize="normal"
         android:padding="0dp"
-
-        android:text="@string/create_button"
-        />
+        android:contentDescription="@string/create_button" />
 </FrameLayout>
