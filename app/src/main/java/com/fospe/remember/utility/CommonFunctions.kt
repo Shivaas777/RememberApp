@@ -6,33 +6,45 @@ import android.app.KeyguardManager
 import android.content.Context
 import android.content.Context.KEYGUARD_SERVICE
 import android.content.DialogInterface.OnShowListener
+import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.BlendMode
-import android.graphics.BlendModeColorFilter
-import android.graphics.Color
-import android.graphics.PorterDuff
+import android.graphics.*
 import android.hardware.biometrics.BiometricManager
 import android.os.Build
+import android.os.Environment
 import android.util.Log
 import android.view.Gravity
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
+import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModel
 import com.fospe.remember.R
+import com.fospe.remember.viewmodels.members.UploadImageViewModel
+import com.fospe.remember.viewmodels.relation.GetRelationViewModel
 import com.shashank.platform.fancyflashbarlib.Flashbar
 import kotlinx.android.synthetic.main.add_comment.*
 import kotlinx.android.synthetic.main.custom_toolbar.view.*
 import kotlinx.android.synthetic.main.fragment_name.*
 import kotlinx.android.synthetic.main.fragment_password.*
 import kotlinx.android.synthetic.main.progress_dialog.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.security.Permission
 
 
 private lateinit var progressDailog :Dialog
+private lateinit var alertDialog: AlertDialog
 fun hideToolbar() {
 
 }
@@ -79,7 +91,7 @@ fun showDialogConfirmation(
         }
 
         // Create the AlertDialog
-        val alertDialog: AlertDialog = builder.create()
+    alertDialog = builder.create()
     alertDialog.setOnShowListener(OnShowListener {
         alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(context,R.color.black))
         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(context,R.color.black))
@@ -87,6 +99,14 @@ fun showDialogConfirmation(
         alertDialog.setCancelable(false)
         alertDialog.show()
 
+}
+
+fun hideAlertdialog()
+{
+    if (alertDialog!=null)
+    {
+        alertDialog.dismiss()
+    }
 }
 
 fun checkForBiometrics(context: Context) : Boolean{
@@ -182,5 +202,76 @@ fun showSnack(activity: Activity, text: String)
             .build()
 
 }
+
+ suspend fun get(bitmap: Bitmap, fileNameToSave: String, context: Context) :File?{
+
+        var file: File? = null
+        var path = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)
+            .toString() + File.separator + fileNameToSave
+        Log.d("Shiva", "path" + path)
+        return try {
+            file = File(path)
+            file.createNewFile()
+
+            //Convert bitmap to byte array
+            val bos = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bos) // YOU can also save it in JPEG
+            val bitmapdata = bos.toByteArray()
+
+            //write the bytes in file
+            val fos = FileOutputStream(file)
+            fos.write(bitmapdata)
+            fos.flush()
+            fos.close()
+            file
+        } catch (e: Exception) {
+            e.printStackTrace()
+            file // it will return null
+        }
+    }
+
+
+  suspend fun  bitmapToFile(bitmap: Bitmap, fileNameToSave: String, context: Context): File?=get(bitmap,fileNameToSave,context)
+
+
+fun pickGalleryImage(launcher: ActivityResultLauncher<Intent>) {
+
+
+    var intent = Intent()
+    intent = Intent(Intent.ACTION_OPEN_DOCUMENT);
+    intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+    intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+    intent.setType("image/*");
+    launcher.launch(intent)
+
+
+}
+
+fun requestMultiplePermission(resultLauncher: ActivityResultLauncher<Array<out String>>,permission :Array<out String>){
+    resultLauncher.launch(permission) }
+
+fun uploadImage(imageFile :File?,uploadImageViewModel:UploadImageViewModel)
+{
+
+    var finalRequestBody: RequestBody? = null
+
+    val builder = MultipartBody.Builder()
+    builder.setType(MultipartBody.FORM)
+    var requestBody: RequestBody? = null
+    //builder.addFormDataPart("userId", user.id)
+    requestBody = imageFile?.asRequestBody("image/jpeg".toMediaTypeOrNull())
+    builder.addFormDataPart("file", imageFile?.getName(), requestBody!!)
+    finalRequestBody = builder.build()
+    uploadImageViewModel.getResponse(finalRequestBody)
+}
+
+fun getRelation(context: Context,userId:String,relationViewModel: GetRelationViewModel) {
+    showProgressDialog(context, "Feting relations")
+    var params= HashMap<String, String>()
+    params["user_id"]= userId
+    relationViewModel.getRelation(params)
+}
+
 
 

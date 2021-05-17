@@ -3,10 +3,17 @@ package com.fospe.remember.utility
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.GsonBuilder
+import javax.inject.Inject
+import javax.inject.Named
 
-class SharedPref(context :Context) {
+
+class SharedPref @Inject constructor(private var context : Context){
+
+
     private val sharedPrefFile = "kotlinsharedpreference"
     val sharedPreferences: SharedPreferences = context.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+
+
 
     fun <T> put(`object`: T, key: String) {
         //Convert object to JSON String.

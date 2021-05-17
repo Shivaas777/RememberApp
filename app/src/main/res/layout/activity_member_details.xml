@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+android:fitsSystemWindows="true"
     android:background="@color/gray"
     tools:context=".ui.members.MemberDetailsActivity">
 
@@ -18,7 +18,7 @@
         android:id="@+id/cardView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="8dp"
+
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true"
@@ -41,9 +41,8 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:adjustViewBounds="true"
+                android:scaleType="fitXY"
                 android:src="@drawable/cover"
-
-
                 app:layout_constraintBottom_toTopOf="@id/guideline2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,12 +53,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.20" />
+                app:layout_constraintGuide_percent="0.30" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView_upper"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:background="@android:color/holo_purple"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView4"
                 app:layout_constraintEnd_toEndOf="@+id/imageView4"
@@ -75,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.32" />
+                app:layout_constraintGuide_percent="0.42" />
 
             <TextView
                 android:id="@+id/tvUsername"
@@ -134,60 +133,248 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.42" />
+                app:layout_constraintGuide_percent="0.55" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_margin="10dp"
+                android:layout_height="0dp"
+
                 app:cardBackgroundColor="@color/gray"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="4dp"
                 app:cardUseCompatPadding="true"
+                app:layout_constraintBottom_toTopOf="@+id/guideline55"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline4">
 
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nestedScrollView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp">
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guideline5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.35" />
+
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/member_birthplace"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvBirthPlace"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/sf_pro_display"
+                            android:lineSpacingExtra="5dp"
+                            android:maxLines="2"
+                            android:scrollbars="vertical"
+
+                            android:text="jhhgkblkblkbkkjbkjdhdhddjjjhhgkblkblkbkkjbkjdhdhddjj"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/guideline5"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/view2"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/white"
+                            app:layout_constraintTop_toBottomOf="@id/tvBirthPlace">
+
+                        </View>
+
+                        <androidx.constraintlayout.widget.Barrier
+                            android:id="@+id/barrier"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:barrierDirection="bottom"
+                            app:constraint_referenced_ids="textView16,tvBirthPlace,view2" />
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:padding="8dp"
-                android:layout_height="match_parent">
+                        <TextView
+                            android:id="@+id/textView17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.40" />
+                            android:layout_marginTop="5dp"
+                            android:text="@string/member_deathplace"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/barrier" />
 
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/member_birthplace"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/tvDeathPlace"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/sf_pro_display"
+                            android:lineSpacingExtra="5dp"
+                            android:maxLines="2"
 
-                <TextView
-                    android:id="@+id/tvBirthPlace"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="3dp"
-                    android:fontFamily="@font/sf_pro_display"
-                    android:lineSpacingExtra="5dp"
-                    android:maxLines="2"
-                    android:scrollbars="vertical"
+                            android:scrollbars="vertical"
+                            android:text="jhhgkblkblkbkkjbkjdhdhddjjjhhgkblkblkbkkjbkjdhdhddjj"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/guideline5"
+                            app:layout_constraintTop_toBottomOf="@id/tvBirthPlace" />
 
+                        <View
+                            android:id="@+id/view3"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/white"
+                            app:layout_constraintTop_toBottomOf="@id/tvDeathPlace">
 
-                    android:textColor="@color/black"
-                    android:textSize="16dp"
-                     />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </View>
 
+                        <androidx.constraintlayout.widget.Barrier
+                            android:id="@+id/barrier1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:barrierDirection="bottom"
+                            app:constraint_referenced_ids="textView17,tvDeathPlace,view3" />
+
+                        <TextView
+                            android:id="@+id/textView18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/member_restingplace"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvDeathPlace" />
+
+                        <TextView
+                            android:id="@+id/tvRestingPlace"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/sf_pro_display"
+                            android:lineSpacingExtra="5dp"
+                            android:maxLines="2"
+
+                            android:scrollbars="vertical"
+                            android:text="jhhgkblkblkbkkjbkjdhdhddjjjhhgkblkblkbkkjbkjdhdhddjj"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/guideline5"
+                            app:layout_constraintTop_toBottomOf="@id/tvDeathPlace" />
+
+                        <View
+                            android:id="@+id/view4"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/white"
+                            app:layout_constraintTop_toBottomOf="@id/tvRestingPlace">
+
+                        </View>
+
+                        <androidx.constraintlayout.widget.Barrier
+                            android:id="@+id/barrier2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:barrierDirection="bottom"
+                            app:constraint_referenced_ids="textView18,tvRestingPlace,view4" />
+
+                        <TextView
+                            android:id="@+id/textView19"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/member_bio"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvRestingPlace" />
+
+                        <TextView
+                            android:id="@+id/tvBio"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/sf_pro_display"
+                            android:lineSpacingExtra="5dp"
+                            android:maxLines="5"
+
+                            android:scrollbars="vertical"
+                            android:text="jhhgkblkblkbkkjbkjdhdhddjjjhhgkblkblkbkkjbkjdhdhddjjjhhgkblkblkbkkjbkjdhdhddjjjhhgkblkblkbkkjbkjdhdhddjjjhhgkblkblkbkkjbkjdhdhddjjjhhgkblkblkbkkjbkjdhdhddjjjhhgkblkblkbkkjbkjdhdhddjjjhhgkblkblkbkkjbkjdhdhddjjjhhgkblkblkbkkjbkjdhdhddjjjhhgkblkblkbkkjbkjdhdhddjj"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/guideline5"
+                            app:layout_constraintTop_toBottomOf="@id/tvRestingPlace" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.core.widget.NestedScrollView>
             </androidx.cardview.widget.CardView>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline55"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.85" />
+
+            <TextView
+                android:id="@+id/tvRelation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/curved_bg_transparent"
+                android:fontFamily="@font/sf_pro_display"
+                android:includeFontPadding="false"
+                android:paddingLeft="30dp"
+                android:paddingTop="7dp"
+                android:paddingRight="30dp"
+
+                android:paddingBottom="7dp"
+                android:text="Family"
+                android:textColor="@color/black"
+
+                android:textSize="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvPostCreated"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                 />
+
+            <TextView
+                android:id="@+id/tvPostCreated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/sf_pro_display"
+                android:text="Created by Tom philip"
+
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

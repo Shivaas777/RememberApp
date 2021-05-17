@@ -16,8 +16,7 @@ import kotlinx.android.synthetic.main.event_item.view.tvUser_born
 import kotlinx.android.synthetic.main.event_item.view.tvUser_died
 import kotlinx.android.synthetic.main.member_item.view.*
 
-class SearchListAdapter(private var context: Context, private var memberList :ArrayList<Members>, val onItemClick: ((Members) -> Unit)? = null
-):
+class SearchListAdapter(private var context: Context, private var memberList :ArrayList<Members>, val onItemClick: ((Members) -> Unit)? = null):
     RecyclerView.Adapter<SearchListAdapter.ViewHolder>() {
 
     class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){

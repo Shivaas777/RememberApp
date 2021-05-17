@@ -97,18 +97,24 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/etName" />
 
-                <EditText
-                    android:id="@+id/etRelation"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:id="@+id/layout_spinner"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3"
                     android:background="@drawable/transparent_bg_bordered"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:padding="10dp"
-                    app:layout_constraintEnd_toStartOf="@+id/etRelationSub"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                    android:layout_marginTop="5dp"
+                    android:layout_height="45dp">
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+
+                        android:spinnerMode="dropdown"
+
+                        />
+                </LinearLayout>
+
+
 
             </LinearLayout>
 
@@ -177,8 +183,9 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/transparent_bg_bordered"
                     android:drawableRight="@drawable/ic_date"
+                    android:focusable="false"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="none"
                     android:padding="10dp"
                     app:layout_constraintEnd_toStartOf="@+id/etRelationSub"
                     app:layout_constraintStart_toStartOf="parent"
@@ -216,8 +223,9 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/transparent_bg_bordered"
                     android:drawableRight="@drawable/ic_date"
+                    android:focusable="false"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="none"
                     android:padding="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView10" />

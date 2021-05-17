@@ -98,9 +98,14 @@ dependencies {
     //Viewpager2
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
 
-    //Image picker library
-    implementation 'com.github.Drjacky:ImagePicker:2.1.6'
 
+    //Image Corousel
+    implementation 'me.relex:circleindicator:2.1.6'
+    implementation 'org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:1.2.1'
+
+    //Dagger
+    implementation 'com.google.dagger:dagger:2.35.1'
+    kapt 'com.google.dagger:dagger-compiler:2.35.1'
 
 
     implementation project (":InternetChange")

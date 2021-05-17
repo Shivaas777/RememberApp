@@ -25,10 +25,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Remember"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.members.MemberDetailsActivity"
-            android:theme="@style/Theme.Remember.NoActionBar">
-
-        </activity>
+        <activity android:name=".ui.store.ProductDetailsActivity"></activity>
+        <activity
+            android:name=".ui.members.MemberDetailsActivity"
+            android:theme="@style/Theme.Remember.NoActionBar"></activity>
         <activity
             android:name=".ui.members.CreateMemberActivity"
             android:theme="@style/Theme.Remember.NoActionBar" />
