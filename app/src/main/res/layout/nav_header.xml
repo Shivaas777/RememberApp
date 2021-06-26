@@ -13,14 +13,16 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:tint="@color/white"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
+android:layout_marginTop="10dp"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
 
-        android:src="@drawable/user" />
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/profile_placeholder" />
 
     <TextView
         android:id="@+id/tvUserNameHead"

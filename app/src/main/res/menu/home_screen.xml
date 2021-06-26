@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_notification"
+        android:orderInCategory="400"
+        android:title="User"
+        android:visible="true"
+        android:icon="@drawable/ic_notification"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_scan"
+        android:orderInCategory="400"
+        android:title="User"
+        android:visible="true"
+        android:icon="@drawable/ic_qr"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_cart"
+        android:orderInCategory="400"
+        android:title="Cart"
+        android:visible="false"
+        android:icon="@drawable/ic_cart"
+        app:showAsAction="ifRoom" />
 </menu>

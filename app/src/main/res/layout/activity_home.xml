@@ -15,7 +15,8 @@
         android:layout_height="match_parent">
 
         <include
-            layout="@layout/custom_toolbar">
+            layout="@layout/custom_toolbar"
+            >
         </include>
 
         <fragment

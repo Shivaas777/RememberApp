@@ -29,10 +29,10 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/user_image"
-                android:layout_width="50dp"
+                android:layout_width="70dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
 
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -48,7 +48,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="1dp"
                 android:fontFamily="@font/sf_pro_display"
-                android:text="Albert Einstien"
+
                 android:textColor="@color/black"
                 android:textFontWeight="500"
                 android:textSize="18dp"
@@ -59,16 +59,34 @@
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
-                android:id="@+id/tvUser_location"
+                android:id="@+id/tvUser_born"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/sf_pro_display"
-                android:text="Ulm, Germany"
-                android:textColor="@color/black"
-                android:textSize="14dp"
+
+                android:textColor="@color/text_color"
+                android:textSize="10dp"
                 app:layout_constraintStart_toStartOf="@+id/tvUserName"
                 app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
+
+            <TextView
+                android:id="@+id/tvUser_died"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/gray_bg"
+                android:fontFamily="@font/sf_pro_display"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+
+                android:textColor="@color/text_color"
+                android:textSize="10dp"
+
+                app:layout_constraintStart_toEndOf="@+id/tvUser_born"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
+
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -76,7 +94,6 @@
                 android:layout_height="20dp"
 
                 android:layout_marginRight="5dp"
-                app:layout_constraintBottom_toBottomOf="@+id/tvUser_location"
                 app:layout_constraintEnd_toStartOf="@+id/tvPostTime"
                 app:layout_constraintTop_toTopOf="@+id/tvUserName"
                 app:srcCompat="@drawable/ic_timer" />
@@ -88,12 +105,24 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:fontFamily="@font/sf_pro_display"
-                android:text="10 mins ago"
+                android:text="15 hours ago"
                 android:textColor="@color/black"
                 android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="@+id/tvUser_location"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tvUserName" />
+
+            <TextView
+                android:id="@+id/tvPostCreated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_display"
+                android:text="created by shivaprasad"
+                android:textSize="10dp"
+                app:layout_constraintStart_toStartOf="@+id/imageView5"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
             <TextView
                 android:id="@+id/tvPostTitle"
@@ -101,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/sf_pro_display"
-                android:text="60th Death Anniversary"
+
                 android:textColor="@color/black"
                 android:textFontWeight="600"
                 android:textSize="22dp"
@@ -113,7 +142,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sf_pro_display"
-                android:text="Event date : 15/08/2020"
+
                 android:textSize="14dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvPostTitle" />
@@ -128,8 +157,6 @@
                 android:lineSpacingExtra="5dp"
                 android:maxLines="5"
                 android:scrollbars="vertical"
-
-                android:text="An anniversary of a loved ones death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long time.An anniversary of a loved ones death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long tim.An anniversary of a loved ones death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long tim  death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long time.An anniversary of a loved ones death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long tim.An anniversary of a loved ones death is always tough. It can open old wounds and rekindle memories that we haven’t thought about for a long tim "
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -167,7 +194,7 @@
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/sf_pro_display"
-                android:text="400"
+
                 android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@+id/imageView6"
                 app:layout_constraintTop_toBottomOf="@+id/view1" />
@@ -201,7 +228,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="5dp"
-                android:text="5000"
+
                 android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@+id/imageView7"
                 app:layout_constraintTop_toBottomOf="@+id/view1" />

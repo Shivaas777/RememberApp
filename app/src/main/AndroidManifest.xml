@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.fospe.remember">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.omegamark.remember">
 
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
@@ -9,6 +10,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <queries>
         <intent>
@@ -24,22 +26,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Remember"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".ui.store.ProductDetailsActivity"></activity>
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+        <activity android:name="com.omegamark.remember.ui.QRCodeScannerActivity"
+            android:theme="@style/Theme.Remember.NoActionBar"/>
+
+
         <activity
-            android:name=".ui.members.MemberDetailsActivity"
-            android:theme="@style/Theme.Remember.NoActionBar"></activity>
-        <activity
-            android:name=".ui.members.CreateMemberActivity"
+            android:name="com.omegamark.remember.ui.members.MapActivity"
             android:theme="@style/Theme.Remember.NoActionBar" />
         <activity
-            android:name=".ui.post.CreatePostActivity"
+            android:name="com.omegamark.remember.ui.store.PlaceOrderActivity"
             android:theme="@style/Theme.Remember.NoActionBar" />
         <activity
-            android:name=".ui.post.PostDetailsActivity"
+            android:name="com.omegamark.remember.ui.store.OrderHistoryActivity"
             android:theme="@style/Theme.Remember.NoActionBar" />
         <activity
-            android:name=".ui.SplashScreenActivity"
+            android:name="com.omegamark.remember.ui.store.ProductDetailsActivity"
+            android:theme="@style/Theme.Remember.NoActionBar" />
+        <activity
+            android:name="com.omegamark.remember.ui.members.MemberDetailsActivity"
+            android:theme="@style/Theme.Remember.NoActionBar" />
+        <activity
+            android:name="com.omegamark.remember.ui.members.CreateMemberActivity"
+            android:theme="@style/Theme.Remember.NoActionBar" />
+        <activity
+            android:name="com.omegamark.remember.ui.post.CreatePostActivity"
+            android:theme="@style/Theme.Remember.NoActionBar" />
+        <activity
+            android:name="com.omegamark.remember.ui.post.PostDetailsActivity"
+            android:theme="@style/Theme.Remember.NoActionBar" />
+        <activity
+            android:name="com.omegamark.remember.ui.SplashScreenActivity"
             android:theme="@style/Theme.Remember.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,15 +66,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.HomeScreen.HomeActivity"
+            android:name="com.omegamark.remember.ui.HomeScreen.HomeActivity"
             android:theme="@style/Theme.Remember.NoActionBar" />
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name="com.omegamark.remember.ui.login.LoginActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ui.register.RegisterActivity"
+            android:name="com.omegamark.remember.ui.register.RegisterActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name=".BaseActivity" />
+        <activity android:name="com.omegamark.remember.BaseActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -67,6 +85,14 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
+
+        <service
+            android:name=".fcm.RememberFirebaseMessagingService"
+            android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

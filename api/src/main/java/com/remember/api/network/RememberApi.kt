@@ -9,6 +9,8 @@ import com.remember.api.models.post.PostResponse
 import com.remember.api.models.registration.RegistrationResponse
 import com.remember.api.models.registration.VerificationResponse
 import com.remember.api.models.relation.RelationResponse
+import com.remember.api.models.store.OrderHistoryResponse
+import com.remember.api.models.store.StoreListResponse
 import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.Body
@@ -57,6 +59,21 @@ interface RememberApi {
 
     @POST("/user/addMember")
     suspend fun addMember(@Body body: HashMap<String, String>):Response<ApiResponse>
+
+    @POST("/user/addMemberFromSearch")
+    suspend fun addMemberFromSearch(@Body body: HashMap<String, String>):Response<ApiResponse>
+
+    @POST("/user/getStoreList")
+    suspend fun getStoreList(@Body body: HashMap<String, String>):Response<StoreListResponse>
+
+    @POST("/user/buyItem")
+    suspend fun buyProduct(@Body body: HashMap<String, Object>):Response<ApiResponse>
+
+    @POST("/user/getOrderList")
+    suspend fun getOrderHistory(@Body body: HashMap<String, String>):Response<OrderHistoryResponse>
+
+    @POST("/user/updateProfile")
+    suspend fun updateUser(@Body body: HashMap<String, String>):Response<VerificationResponse>
 
 
 }

@@ -9,11 +9,13 @@ import com.remember.api.models.post.PostResponse
 import com.remember.api.models.registration.RegistrationResponse
 import com.remember.api.models.registration.VerificationResponse
 import com.remember.api.models.relation.RelationResponse
+import com.remember.api.models.store.OrderHistoryResponse
+import com.remember.api.models.store.StoreListResponse
 import com.remember.api.network.RememberClient
 import okhttp3.RequestBody
 import retrofit2.Response
 
-class APIRepository() {
+class APIRepository(){
 
     suspend fun registerUser(requestBody: HashMap<String, String>): RegistrationResponse = RememberClient.api.registerUser(requestBody)
     suspend fun verifyUser(requestBody: HashMap<String, String>): VerificationResponse= RememberClient.api.verifyUser(requestBody)
@@ -29,4 +31,9 @@ class APIRepository() {
     suspend fun uploadImage(requestBody: RequestBody):Response<UploadImageResponse> = RememberClient.api.uploadImage(requestBody)
     suspend fun addMember(requestBody: HashMap<String, String>):Response<ApiResponse> = RememberClient.api.addMember((requestBody))
     suspend fun deleteMember(requestBody: HashMap<String, String>):Response<ApiResponse> = RememberClient.api.deleteMember((requestBody))
+    suspend fun addMemberFromSearch(requestBody: HashMap<String, String>):Response<ApiResponse> = RememberClient.api.addMemberFromSearch((requestBody))
+    suspend fun getStoreList(requestBody: HashMap<String, String>):Response<StoreListResponse> = RememberClient.api.getStoreList((requestBody))
+    suspend fun buyProduct(requestBody: HashMap<String, Object>):Response<ApiResponse> = RememberClient.api.buyProduct((requestBody))
+    suspend fun getOrderHistory(requestBody: HashMap<String, String>):Response<OrderHistoryResponse> = RememberClient.api.getOrderHistory((requestBody))
+    suspend fun updateUser(requestBody: HashMap<String, String>):Response<VerificationResponse> = RememberClient.api.updateUser((requestBody))
 }

@@ -248,8 +248,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/transparent_bg_bordered"
+                android:focusable="false"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="none"
+                android:drawableRight="@drawable/ic_location"
+
                 android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -269,11 +272,13 @@
             <EditText
                 android:id="@+id/etDeathPlace"
                 android:layout_width="0dp"
+                android:focusable="false"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/transparent_bg_bordered"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="none"
+                android:drawableRight="@drawable/ic_location"
                 android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -296,8 +301,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/transparent_bg_bordered"
-                android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="none"
+                android:focusable="false"
+                android:drawableEnd="@drawable/ic_location"
                 android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -321,11 +327,48 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/transparent_bg_bordered"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:maxLength="100"
+                android:gravity="start"
+                android:inputType="textMultiLine"
                 android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView102" />
+
+            <RadioGroup
+                android:layout_marginTop="10dp"
+                android:id="@+id/groupradio"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etBio"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <!-- In RadioGroup create the 1 Radio Button-->
+                <!-- like this we will add some more Radio Button-->
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:buttonTint="@color/black"
+                    android:id="@+id/radia_id1"
+                    android:text="PUBLIC"
+                    />
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/black"
+                    android:id="@+id/radia_id2"
+                    android:text="PRIVATE"
+                    />
+
+
+
+
+            </RadioGroup>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_createProfile"
@@ -344,7 +387,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etBio" />
+                app:layout_constraintTop_toBottomOf="@+id/groupradio" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

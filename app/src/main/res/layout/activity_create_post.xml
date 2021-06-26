@@ -40,10 +40,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sf_pro_display"
+                android:text="@string/create_post_select_profile"
                 android:textColor="@color/black"
                 android:textFontWeight="400"
                 android:textSize="16dp"
-                android:text="@string/create_post_select_profile"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,27 +51,28 @@
                 android:id="@+id/tvTitleCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0/50"
                 android:layout_marginRight="5dp"
+                android:text="0/50"
                 app:layout_constraintBottom_toTopOf="@+id/et_title"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <LinearLayout
-    android:layout_width="match_parent"
-    android:id="@+id/layout_spinner"
-    app:layout_constraintTop_toBottomOf="@+id/textView3"
-    android:background="@drawable/transparent_bg_bordered"
-    android:layout_marginTop="2dp"
-    android:layout_height="40dp">
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+                android:id="@+id/layout_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/transparent_bg_bordered"
+                app:layout_constraintTop_toBottomOf="@+id/textView3">
 
-        android:spinnerMode="dropdown"
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
 
-        />
-</LinearLayout>
+                    android:spinnerMode="dropdown"
+
+                    />
+            </LinearLayout>
 
 
             <TextView
@@ -80,10 +81,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/sf_pro_display"
+                android:text="@string/create_post_select_date"
                 android:textColor="@color/black"
                 android:textFontWeight="400"
                 android:textSize="16dp"
-                android:text="@string/create_post_select_date"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layout_spinner" />
 
@@ -92,11 +93,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-
-                android:focusable="false"
-                android:drawableRight="@drawable/ic_date"
                 android:background="@drawable/transparent_bg_bordered"
                 android:ems="10"
+                android:focusable="false"
                 android:inputType="none"
 
                 android:padding="10dp"
@@ -108,9 +107,9 @@
                 android:id="@+id/tvDescCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0/250"
                 android:layout_marginRight="5dp"
                 android:maxLength="250"
+                android:text="0/250"
 
                 app:layout_constraintBottom_toTopOf="@+id/et_desc"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -121,10 +120,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/sf_pro_display"
+                android:text="@string/create_post_event_title"
                 android:textColor="@color/black"
                 android:textFontWeight="400"
                 android:textSize="16dp"
-                android:text="@string/create_post_event_title"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_date" />
 
@@ -135,8 +134,8 @@
                 android:layout_marginTop="2dp"
                 android:background="@drawable/transparent_bg_bordered"
                 android:ems="10"
-                android:maxLength="50"
                 android:inputType="textPersonName"
+                android:maxLength="50"
 
                 android:padding="10dp"
 
@@ -151,27 +150,59 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/sf_pro_display"
+                android:text="@string/create_post_event_desc"
                 android:textColor="@color/black"
                 android:textFontWeight="400"
                 android:textSize="16dp"
-                android:text="@string/create_post_event_desc"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_title" />
 
             <EditText
                 android:id="@+id/et_desc"
                 android:layout_width="0dp"
-                android:gravity="start"
-                android:maxLines="10"
                 android:layout_height="250dp"
                 android:layout_marginTop="2dp"
                 android:background="@drawable/transparent_bg_bordered"
                 android:ems="10"
-                android:padding="10dp"
+                android:gravity="start"
                 android:inputType="textMultiLine"
+                android:maxLines="10"
+                android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+            <RadioGroup
+                android:id="@+id/groupradio"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/btn_create_memories"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_desc">
+
+                <!-- In RadioGroup create the 1 Radio Button-->
+                <!-- like this we will add some more Radio Button-->
+                <RadioButton
+                    android:id="@+id/radia_id1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/black"
+                    android:checked="true"
+                    android:text="PUBLIC" />
+
+                <RadioButton
+                    android:id="@+id/radia_id2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/black"
+                    android:text="PRIVATE" />
+
+
+            </RadioGroup>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_create_memories"
@@ -189,7 +220,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_desc" />
+                app:layout_constraintTop_toBottomOf="@+id/groupradio" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

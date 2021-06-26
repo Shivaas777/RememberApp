@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "669043799950",
+    "project_id": "remember-6accf",
+    "storage_bucket": "remember-6accf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669043799950:android:05464adcbc0d7d6618d6df",
+        "android_client_info": {
+          "package_name": "com.omegamark.remember"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669043799950-1rc3epqnej38gc3nsp7u8mbdj3gpt2bu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqiXv4ba986l11IOfUwl2pvKKq-wo9dek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669043799950-1rc3epqnej38gc3nsp7u8mbdj3gpt2bu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
